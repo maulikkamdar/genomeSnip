@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
+	<!-- Mobile viewport optimized -->
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- Title -->
+	<title>GenomeSnip Browser</title>
+	<!-- Stylesheet -->	
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet" href="css/slider.css" type="text/css">
+	<script type="text/javascript" src="js/libraries/jquery.js"></script>
+	<script type="text/javascript" src="js/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/libraries/kinetic.min.js"></script>
+	<script type="text/javascript" src="js/libraries/d3.v3.min.js"></script>
+	<script type="text/javascript" src="js/libraries/bootstrap-multiselect.js"></script>
+	<script type="text/javascript" src="js/libraries/bootstrap-slider.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-inverse">
+		<div class="navbar-inner">
+		        <div class="container-fluid">
+          			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          				<span class="icon-bar"></span>
+           				<span class="icon-bar"></span>
+           				<span class="icon-bar"></span>
+         			</button>
+          			<a class="brand" href="#">GenomeSnip Browser</a>
+          			<div class="nav-collapse collapse">
+            				<ul class="nav">
+             					<li class="active"><a href="#">Home</a></li>
+              					<li><a href="#about">About</a></li>
+              					<li><a href="#contact">Contact</a></li>
+              					<li class="dropdown">
+                					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<b class="caret"></b></a>
+                					<ul class="dropdown-menu">
+                  						<li><a href="#">Tutorial</a></li>
+										<li><a href="#">Demo</a></li>
+										<li><a href="#">Documentation</a></li>
+                					</ul>
+              					</li>
+            				</ul>
+          			</div><!--/.nav-collapse -->
+        		</div>
+      		</div>
+    	</div>
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<br>
+				<div class="tabbable">
+					<ul class="nav nav-tabs">
+						<li><a href="#wheel" data-toggle="tab">Genome Wheel</a></li>
+						<li class="active"><a href="#track" data-toggle="tab">Genome Tracks</a></li>
+						<li><a href="#force" data-toggle="tab">Publications</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="wheel" class="tab-pane fade">
+							<div id="offsetDiv" align="center">
+				 				<!-- <canvas id="wheelCanvas" width="150" height="150"></canvas>-->
+							</div>
+						</div>
+						<div id="track" class="tab-pane active fade in">
+							<!-- TCGA Toolbar - should be modified to be flexible -->
+							<div class="row-fluid">
+								<div class="span8" id="genomeBar">
+									<select id="chromosomeIds">
+									</select>
+									<a class="btn" href="#"><i class="icon-zoom-out icon-black"></i></a>
+									<div class="slider slider-horizontal" id="trackSlider" style="width: 140px;"></div>
+									<a class="btn" href="#"><i class="icon-zoom-in icon-black"></i></a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a class="btn" href="#"><i class="icon-backward icon-black"></i></a>
+									<a class="btn" href="#"><i class="icon-play icon-black"></i></a>
+									<a class="btn" href="#"><i class="icon-stop icon-black"></i></a>
+									<a class="btn" href="#"><i class="icon-forward icon-black"></i></a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="text" placeholder="Gene Positions…" id="genePos">&nbsp;<button type="submit" class="btn">Go</button>
+									
+								</div>
+								<div class="span4" id="tcgaBar">
+									<select id="cancerTypes">
+									</select>
+									<select id="patientList">
+									</select>
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span12">
+									<div id="genomeTrackCanvas"></div>
+								</div>
+							</div>
+						</div>
+						<div id="force" class="tab-pane fade">
+							<div class="row-fluid">
+								<div class="span8">
+									<div id="graph" align="center"></div>
+								</div>
+								<div class="span4">
+									<br>
+									<div id="extraDetailPanel">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="splashScreenExplorer">
+  		<img src="img/loading-animation.gif"><img src="img/tcga_logo.png"><br>
+  		<h2 align="center">Simulating. One moment please…</h2>
+    </div>
+    
+	
+	<!-- <script src="js/forcegraph.js"></script> -->
+	<script src="js/genomeparser.js"></script>
+	<script src="js/genomewheel.js" defer="defer"></script> 
+	<!-- <script src="js/kinetictest.js" defer="defer"></script> -->
+	<script src="js/genometrack.js" defer="defer"></script>
+	<script src="js/tcgaGenomeTrack.js"></script>
+</body></html>
