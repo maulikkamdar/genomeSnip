@@ -139,13 +139,14 @@ function drawChromosomeLayer() {
 				},
 				fill: '#ffffff',
 				stroke: 'black',
-				fillEnabled: false,
+			//	opacity: 0.1,
+			//	fillEnabled: false,
 				strokeWidth: 1
 			});
 			
 			chromosomeElem.on('mouseover', function() {
 				console.log("here");
-		/*		this.setDrawFunc(function(context){
+			/*	this.setDrawFunc(function(context){
 	            	context.beginPath();
 					context.arc(center.x, center.y, genomeInnerRadius, Math.PI, -Math.PI/2, true);
 					context.lineTo(center.x + genomeOuterRadius*Math.cos(-Math.PI/2), center.y + genomeOuterRadius*Math.sin(-Math.PI/2));
@@ -153,9 +154,9 @@ function drawChromosomeLayer() {
 					context.lineTo(center.x + genomeInnerRadius*Math.cos(Math.PI), center.y + genomeInnerRadius*Math.sin(Math.PI));
 					context.closePath();
 					context.fillStrokeShape(this);
-	            });*/
+	            });
 	            
-	            genomeLayer.draw();
+	            genomeLayer.draw();*/
 	        });
 
 			chromosomeElem.on('mouseout', function() {
@@ -219,7 +220,7 @@ function drawIdeogramLayer() {
 		}
 	}
 	genomeLayer.draw();
-//	genomeParsed = true; // Remove this line of code later
+	//genomeParsed = true; // Remove this line of code later
 }
 
 function drawGeneLayer() {
@@ -265,9 +266,9 @@ function drawGeneLayer() {
 }
 
 
+genomeLayer.add(chromosomeGroup);
 genomeLayer.add(ideogramGroup);
 genomeLayer.add(geneGroup);
-genomeLayer.add(chromosomeGroup);
 stage.add(genomeLayer);
 
 jQuery(stage.content).on('mousewheel', ui.zoom);

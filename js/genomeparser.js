@@ -45,6 +45,9 @@ function getAllGenes(species) {
 				chromosomes[chromosomeId].genes.push(gene);
 			}
 		}
+		for(i in chromosomes){
+			chromosomes[i].genes.sort(function(a,b){return parseFloat(a.start - b.start);})
+		}
 		console.log(chromosomes);
 		drawGeneLayer();
 	});
