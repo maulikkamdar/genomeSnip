@@ -29,6 +29,9 @@ $endpoint = $_GET['endpoint'];
 $req = $_GET['dataset'];
 $chromosome = $_GET['chromosomeNo'];
 $patient = $_GET['patientNo'];
+$gene = $_GET['gene'];
+$geneStart = $_GET['geneStart'];
+$geneStop = $_GET['geneStop'];
 
 switch($req) {
 	case "patientList" : $query = "SELECT DISTINCT * WHERE {
@@ -40,7 +43,9 @@ switch($req) {
 						<".$patient."> <http://tcga.deri.ie/schema/result> ?result.
 						?result <http://tcga.deri.ie/schema/chromosome> \"".$chromosome."\"; 
 								<http://tcga.deri.ie/schema/position> ?pos; 
-								<http://tcga.deri.ie/schema/beta_value> ?value
+								<http://tcga.deri.ie/schema/beta_value> ?value .
+						FILTER(  <http://www.w3.org/2001/XMLSchema#double>(?pos)  > ".$geneStart.").
+						FILTER(  <http://www.w3.org/2001/XMLSchema#double>(?pos)  < ".$geneStop.")
 					}";
 		break;
 	case "exonData" : $query = "SELECT DISTINCT * WHERE {

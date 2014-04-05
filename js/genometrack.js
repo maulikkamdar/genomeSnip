@@ -99,7 +99,6 @@ genomeTrackCanvas.add(staticTrackLayer);
 
 function drawGenomeTrack(chromosomeId) {
 	clearTracks();
-	
 	var ideograms = chromosomes[chromosomeId].ideograms;
 	var currentGenomeLength = chromosomes[chromosomeId].length;
 	trackLength = currentGenomeLength*baseLength;
@@ -375,6 +374,7 @@ function populateTracks(){
 var populateTracksTrigger = setInterval(function(){
 	if(genomeParsed == true) {
 		populateTracks();
+		console.log("here");
 		jQuery(".splashScreenExplorer").hide();
 		clearInterval(populateTracksTrigger);
 	}

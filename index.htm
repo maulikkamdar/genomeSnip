@@ -19,6 +19,16 @@
 	<script type="text/javascript" src="js/libraries/bootstrap-multiselect.js"></script>
 	<script type="text/javascript" src="js/libraries/bootstrap-slider.js"></script>
 	<script type="text/javascript" src="js/utils.js"></script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-47297724-2', 'deri.ie');
+	  ga('send', 'pageview');
+
+	</script>	
 </head>
 
 <body>
@@ -55,18 +65,58 @@
 			<div class="span12">
 				<br>
 				<div class="tabbable">
-					<ul class="nav nav-tabs">
-						<li><a href="#wheel" data-toggle="tab">Genome Wheel</a></li>
-						<li class="active"><a href="#track" data-toggle="tab">Genome Tracks</a></li>
-						<li><a href="#force" data-toggle="tab">Publications</a></li>
+					<ul class="nav nav-tabs" id="tabIds">
+						<li class="active"><a href="#wheel" data-toggle="tab">Genome Wheel</a></li>
+					<!--<li><a href="#track" data-toggle="tab">Genome Tracks</a></li>
+						<li><a href="#force" data-toggle="tab">Publications</a></li>-->
 					</ul>
-					<div class="tab-content">
-						<div id="wheel" class="tab-pane fade">
+					<div class="tab-content" id="tabContents">
+						<div id="wheel" class="tab-pane active fade in">
+							<div class="navbar">
+							  <div class="navbar-inner">
+							    <div class="container"><!-- Collapsable nav bar -->
+							      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+							      </a>
+							 
+							      <!-- Start of the nav bar content -->
+							      <div class="nav-collapse">
+							        <ul class="nav pull-right">
+							          <li class="divider-vertical"></li>
+							          <li class="dropdown">
+							            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Set Threshold Variables<strong class="caret"></strong></a>
+							            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+							           		<div class="container">
+												<input id="disCon" class="floatThres" style="float: left; margin-right: 10px;" type="checkbox" checked>
+							            		<label for="disCon" class="labelThres" style="float: left; margin-right: 10px;" >Diseases (OMIM)</label>
+							            		<input id="disConLev" class="floatThres" type="text" value="10"/>
+											</div>
+											<div class="container">
+												<input id="pathCon" class="floatThres" style="float: left; margin-right: 10px;" type="checkbox" checked>
+												<label for="pathCon" class="labelThres" style="float: left; margin-right: 10px;" >Pathways (KEGG)</label>
+												<input id="pathConLev" class="floatThres" type="text" value="4" />	
+											</div>
+											<div class="container">
+												<input id="pubCon" class="floatThres" style="float: left; margin-right: 10px;" type="checkbox" checked>
+												<label for="PubCon" class="labelThres" style="float: left; margin-right: 10px;" >Publications (PubMed)</label>
+												<input id="pubConLev" class="floatThres" type="text" value="1" />		
+											</div>
+							            	<input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Refresh" />
+											<br><br>
+							            </div>
+							          </li>
+							        </ul>
+							      </div>
+							    </div>
+							  </div>
+							</div>
 							<div id="offsetDiv" align="center">
 				 				<!-- <canvas id="wheelCanvas" width="150" height="150"></canvas>-->
 							</div>
 						</div>
-						<div id="track" class="tab-pane active fade in">
+						<div id="track" class="tab-pane fade" style="display:none">
 							<!-- TCGA Toolbar - should be modified to be flexible -->
 							<div class="row-fluid">
 								<div class="span8" id="genomeBar">
@@ -80,9 +130,9 @@
 									<a class="btn" href="#" id="play"><i class="icon-play icon-black"></i></a>
 									<a class="btn" href="#" id="stop"><i class="icon-stop icon-black"></i></a>
 									<a class="btn" href="#" id="front"><i class="icon-forward icon-black"></i></a>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<input type="text" placeholder="Gene Positions…" id="genePos">&nbsp;<button type="submit" class="btn">Go</button>
-									
+									-->
 								</div>
 								<div class="span4" id="tcgaBar">
 									<select id="cancerTypes">
@@ -97,7 +147,7 @@
 								</div>
 							</div>
 						</div>
-						<div id="force" class="tab-pane fade">
+						<div id="force" class="tab-pane fade" style="display:none;">
 							<div class="row-fluid">
 								<div class="span8">
 									<div id="graph" align="center"></div>
@@ -116,17 +166,15 @@
 		</div>
 		
 	</div>
-	
-	<div class="splashScreenExplorer">
+    <div class="splashScreenExplorer">
   		<img src="img/loading-animation.gif"><img src="img/tcga_logo.png"><br>
   		<h2 align="center">Simulating. One moment please…</h2>
     </div>
-    
 	
 	<!-- <script src="js/forcegraph.js"></script> -->
 	<script src="js/genomeparser.js"></script>
 	<script src="js/genomewheel.js" defer="defer"></script> 
 	<!-- <script src="js/kinetictest.js" defer="defer"></script> -->
-	<script src="js/genometrack.js" defer="defer"></script>
+	<script src="js/geneTrack.js" defer="defer"></script>
 	<script src="js/tcgaGenomeTrack.js"></script>
 </body></html>

@@ -10,7 +10,7 @@ body {
     width:750px;
     position: relative;
     height: 300px;
-    top: -600px;
+    top: -1500px;
 	z-index:10;
     background: white;
     -moz-border-radius: 15px;
@@ -172,6 +172,17 @@ em.ref {
 #map .leaflet-popup-content a:hover {
   color: #000;
   border-bottom-color: #0da4d3;
+}
+
+label.labelThres{
+    width:70px;
+    display:block;
+    float:left;
+    text-align:left;
+}
+input.floatThres{
+  width:20px;
+  float:left;
 }
 
 
