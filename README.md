@@ -22,7 +22,7 @@ GenomeSnip, a semantic visual analytics platform, was developed to facilitate ca
 * Kinetic JS (http://kineticjs.com)
 
 **TODO Technicalities:**
-* Upload the Co-occurrence RDF Data Cubes to GIT (Please contact me for the same)
+* This code is incomplete - PHP Parser and Co-occurrence Data cubes are not uploaded due to reliance on other modules - Please contact me for updated version and data. I will push them, once made independent.
 * The Exon Expression datasets are not visualized using this version
 * The code is very messy !!
 
